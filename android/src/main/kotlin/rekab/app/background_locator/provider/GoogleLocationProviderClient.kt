@@ -2,11 +2,12 @@ package rekab.app.background_locator.provider
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.PowerManager
 import com.google.android.gms.location.*
 
-class GoogleLocationProviderClient(context: Context, override var listener: LocationUpdateListener?) : BLLocationProvider {
+class GoogleLocationProviderClient(context: Context,powerManager: PowerManager, override var listener: LocationUpdateListener?) : BLLocationProvider {
     private val client: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
-    private val locationCallback = LocationListener(listener)
+    private val locationCallback = LocationListener(listener, powerManager)
 
     override fun removeLocationUpdates() {
         client.removeLocationUpdates(locationCallback)
@@ -30,8 +31,10 @@ class GoogleLocationProviderClient(context: Context, override var listener: Loca
     }
 }
 
-private class LocationListener(val listener: LocationUpdateListener?) : LocationCallback() {
+private class LocationListener(val listener: LocationUpdateListener?, powerManager: PowerManager) : LocationCallback() {
+    private val pm = powerManager
+    
     override fun onLocationResult(location: LocationResult?) {
-        listener?.onLocationUpdated(LocationParserUtil.getLocationMapFromLocation(location))
+        listener?.onLocationUpdated(LocationParserUtil.getLocationMapFromLocation(location, pm))
     }
 }

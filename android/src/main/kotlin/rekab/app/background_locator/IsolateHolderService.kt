@@ -234,9 +234,10 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
 
 
     private fun getLocationClient(context: Context): BLLocationProvider {
+        val pwManager = getSystemService(POWER_SERVICE) as PowerManager
         return when (PreferencesManager.getLocationClient(context)) {
-            LocationClient.Google -> GoogleLocationProviderClient(context, this)
-            LocationClient.Android -> AndroidLocationProviderClient(context, this)
+            LocationClient.Google -> GoogleLocationProviderClient(context,pwManager, this)
+            LocationClient.Android -> AndroidLocationProviderClient(context,pwManager, this)
         }
     }
 

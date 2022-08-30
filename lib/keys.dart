@@ -56,6 +56,7 @@ class Keys {
       'settings_android_wakeLockTime';
   static const String SETTINGS_ANDROID_LOCATION_CLIENT =
       "settings_android_location_client";
+  static const String ARG_SCREEN_OFF = 'screen_off';
 
   static const String SETTINGS_IOS_SHOWS_BACKGROUND_LOCATION_INDICATOR =
       'settings_ios_showsBackgroundLocationIndicator';

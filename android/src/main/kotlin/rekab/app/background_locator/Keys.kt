@@ -107,6 +107,9 @@ class Keys {
 
         @JvmStatic
         val SETTINGS_ACCURACY = "settings_accuracy"
+        
+        @JvmStatic
+        val ARG_SCREEN_OFF = "screen_off"
 
         @JvmStatic
         val SETTINGS_INTERVAL = "settings_interval"

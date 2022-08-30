@@ -13,7 +13,7 @@ class LocationDto {
   final double time;
   final bool isMocked;
   final String provider;
-  final bool screenOff;
+  final bool screenOn;
 
   LocationDto._(
     this.latitude,
@@ -26,7 +26,7 @@ class LocationDto {
     this.time,
     this.isMocked,
     this.provider,
-    this.screenOff,
+    this.screenOn,
   );
 
   factory LocationDto.fromJson(Map<dynamic, dynamic> json) {
@@ -43,7 +43,7 @@ class LocationDto {
       json[Keys.ARG_TIME],
       isLocationMocked,
       json[Keys.ARG_PROVIDER] ?? "",
-      json[Keys.ARG_SCREEN_OFF] ?? false,
+      json[Keys.ARG_SCREEN_ON] ?? false,
     );
   }
 
@@ -59,12 +59,12 @@ class LocationDto {
       Keys.ARG_TIME: this.time,
       Keys.ARG_IS_MOCKED: this.isMocked,
       Keys.ARG_PROVIDER: this.provider,
-      Keys.ARG_SCREEN_OFF: this.screenOff,
+      Keys.ARG_SCREEN_ON: this.screenOn,
     };
   }
 
   @override
   String toString() {
-    return 'LocationDto{latitude: $latitude, longitude: $longitude, accuracy: $accuracy, altitude: $altitude, speed: $speed, speedAccuracy: $speedAccuracy, heading: $heading, time: $time, isMocked: $isMocked, provider: $provider, screenOff: $screenOff}';
+    return 'LocationDto{latitude: $latitude, longitude: $longitude, accuracy: $accuracy, altitude: $altitude, speed: $speed, speedAccuracy: $speedAccuracy, heading: $heading, time: $time, isMocked: $isMocked, provider: $provider, screenOn: $screenOn}';
   }
 }

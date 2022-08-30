@@ -3,6 +3,7 @@ package rekab.app.background_locator.provider
 import android.location.Location
 import android.os.Build
 import com.google.android.gms.location.LocationResult
+import android.os.PowerManager
 import rekab.app.background_locator.Keys
 import java.util.HashMap
 
